@@ -42,4 +42,18 @@ def get_pet_labels(image_dir):
     """
     # Replace None with the results_dic dictionary that you created with this
     # function
-    return None
+    
+    #string pattern looks so like this
+    #xxx_xx_xx_number so far the last _ contains a number which should be removed from the pet label
+    dirList = listdir(image_dir)
+    result_dic = {}
+    for i in dirList:
+      result  = i.lower().strip().split('_')[0:-1]
+      gesamt=''
+      for text in result:
+        gesamt += text + ' '
+      
+      result_dic[i] = [gesamt.strip()]
+      #result_dic[i] = [str(str(i).lower().strip().split('_')[0:-1])]
+
+    return result_dic

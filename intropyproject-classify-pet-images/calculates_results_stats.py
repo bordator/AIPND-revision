@@ -50,7 +50,7 @@ def calculates_results_stats(results_dic):
     the user to determine the 'best' model for classifying images. Note that 
     the statistics calculated as the results are either percentages or counts.
     Parameters:
-      results_dic - Dictionary with key as image filename and value as a List 
+        results_dic - Dictionary with key as image filename and value as a List 
              (index)idx 0 = pet image label (string)
                     idx 1 = classifier label (string)
                     idx 2 = 1/0 (int)  where 1 = match between pet image and 
@@ -70,4 +70,49 @@ def calculates_results_stats(results_dic):
     """        
     # Replace None with the results_stats_dic dictionary that you created with 
     # this function 
-    return None
+
+    results_stats_dic = {}
+    
+    results_stats_dic['n_images'] = len(results_dic) # Number of Images
+
+    # Number of Correct Dog matches
+    #Both labels are of dogs: results_dic[key][3] = 1 and results_dic[key][4] = 1
+    results_stats_dic['n_correct_dogs'] = 0
+    #Number of Dog Images
+    #Pet Label is a dog: results_dic[key][3] = 1           
+    results_stats_dic['n_dogs_img']=0
+    #Number of Correct Non-Dog matches
+    #Both labels are NOT of dogs: results_dic[key][3] = 0 and results_dic[key][4] = 0
+    results_stats_dic['n_correct_notdogs']=0
+
+    #D: Number of Not Dog Images
+    # number images - number dog images --OR--
+    # Pet Label is NOT a dog: results_dic[key][3] = 0
+    results_stats_dic['n_notdogs_img'] = 0
+
+    #E: Number of Correct Breed matches
+    # Pet Label is a dog & Labels match: results_dic[key][3] = 1 and results_dic[key][2] = 1
+    results_stats_dic['n_correct_breed'] = 0
+    #(Optional) Y: Number of label matches
+    # Labels match: results_dic[key][2] = 1
+    results_stats_dic['n_match']=0
+    for k in results_dic:
+        if  (k[3] == 1 and k[4] == 1):
+                results_stats_dic['n_correct_dogs'] += 1
+        if k[3] :
+                results_stats_dic['n_dogs_img'] += 1
+        if k[3] == 0 and k[4]==0:
+                results_stats_dic['n_correct_notdogs'] += 1
+        if k[3]==0:
+                results_stats_dic['n_notdogs_img'] += 1       
+        if k[2]==1 and k[2]==1:
+                results_stats_dic['n_correct_breed'] += 1
+        if k[2]==1:
+                results_stats_dic['n_match'] += 1
+        
+        results_stats_dic['pct_match'] = (results_stats_dic['n_match'] / results_stats_dic['n_images'])*100 if results_stats_dic['n_images'] > 0 else 0
+        results_stats_dic['pct_correct_dogs'] = results_stats_dic['n_correct_dogs'] / results_stats_dic['n_dogs_img'] * 100
+        results_stats_dic['pct_correct_breed'] = results_stats_dic['n_correct_breed'] / results_stats_dic['n_dogs_img'] * 100
+        results_stats_dic['pct_correct_notdogs'] = (results_stats_dic['n_correct_notdogs'] / results_stats_dic['n_notdogs_img'] * 100) if results_stats_dic['n_notdogs_img'] > 0 else 0
+           
+    return results_stats_dic
