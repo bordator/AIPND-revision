@@ -62,5 +62,27 @@ def print_results(results_dic, results_stats_dic, model,
     Returns:
            None - simply printing results.
     """    
-    None
+    
+    print('Model: {}'.format(model))
+    print('number of images: {}'.format(results_stats_dic['n_images']))
+    print('number of dog images: {}'.format(results_stats_dic['n_dogs_img']))
+    print('number of not dog images: {}'.format(results_stats_dic['n_notdogs_img']))
+    
+    for k,v in results_stats_dic.items():
+        if(k.startswith('pct_')):
+                print('{}% of {}'.format(v, k))
+                
+    if print_incorrect_dogs and not ((results_stats_dic['n_correct_dogs'] + results_stats_dic['n_correct_notdogs']) == results_stats_dic['n_images']):
+        print('missclassified dogs image != classifier based on the dog file')
+        for k,v in results_dic.items():
+                if (sum(results_dic[k][3:])==1):
+                        print("dict entry key:{} values: {}".format(k, v))
+
+    if(print_incorrect_breed and not (results_stats_dic['n_correct_dogs'] == results_stats_dic['n_correct_breed'])):
+        print('missclassified breeds of dogs image != classifier based on the dog file')
+        for k,v in results_dic.items():
+                if (sum(results_dic[k][3:])==2) and (results_dic[k][2]==0):
+                        print("dict entry key:{} values: {}".format(k, v))
+
+ 
                 
