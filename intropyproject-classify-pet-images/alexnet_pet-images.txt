@@ -268,7 +268,7 @@ PetLabelDog: 1  ClassLabelDog: 1
 
                     cat_01.jpg: 
 Real:                        cat   Classifier: african hunting dog, hyena dog, cape hunting dog, lycaon pictus  
-PetLabelDog: 0  ClassLabelDog: 1
+PetLabelDog: 0  ClassLabelDog: 0
 
                   gecko_02.jpg: 
 Real:                      gecko   Classifier:               alligator lizard  
@@ -310,11 +310,11 @@ PetLabelDog: 1  ClassLabelDog: 1
 
  ** Statistics from calculates_results_stats() function:
 N Images: 40  N Dog Images: 30  N NotDog Images: 10 
-Pct Corr dog: 100.0 Pct Corr NOTdog:  90.0  Pct Corr Breed:  80.0
+Pct Corr dog: 100.0 Pct Corr NOTdog: 100.0  Pct Corr Breed:  80.0
 
  ** Check Statistics - calculated from this function as a check:
 N Images: 40  N Dog Images: 30  N NotDog Images: 10 
-Pct Corr dog: 100.0 Pct Corr NOTdog:  90.0  Pct Corr Breed:  80.0
+Pct Corr dog: 100.0 Pct Corr NOTdog: 100.0  Pct Corr Breed:  80.0
 Model: alexnet
 number of images: 40
 number of dog images: 30
@@ -322,16 +322,13 @@ number of not dog images: 10
 75.0% of pct_match
 100.0% of pct_correct_dogs
 80.0% of pct_correct_breed
-90.0% of pct_correct_notdogs
-missclassified dogs image != classifier based on the dog file
-dict entry key:                    cat_01.jpg
-values:['cat', 'african hunting dog, hyena dog, cape hunting dog, lycaon pictus', 0, 0, 1] 
+100.0% of pct_correct_notdogs
 missclassified breeds of dogs image != classifier based on the dog file
-dict entry key:Beagle_01170.jpg values: ['beagle', 'walker hound, walker foxhound', 0, 1, 1]
-dict entry key:Boston_terrier_02285.jpg values: ['boston terrier', 'basenji', 0, 1, 1]
-dict entry key:Beagle_01141.jpg values: ['beagle', 'english foxhound', 0, 1, 1]
-dict entry key:Golden_retriever_05182.jpg values: ['golden retriever', 'tibetan mastiff', 0, 1, 1]
-dict entry key:Great_pyrenees_05367.jpg values: ['great pyrenees', 'kuvasz', 0, 1, 1]
-dict entry key:Golden_retriever_05257.jpg values: ['golden retriever', 'afghan hound, afghan', 0, 1, 1]
+pet label:                    beagle classifier labels:  walker hound, walker foxhound
+pet label:            boston terrier classifier labels:                        basenji
+pet label:                    beagle classifier labels:               english foxhound
+pet label:          golden retriever classifier labels:                tibetan mastiff
+pet label:            great pyrenees classifier labels:                         kuvasz
+pet label:          golden retriever classifier labels:           afghan hound, afghan
 
-** Total Elapsed Runtime: 0:0:13
+** Total Elapsed Runtime: 0:0:14

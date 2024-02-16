@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 # */AIPND-revision/intropyproject-classify-pet-images/print_results.py
 #                                                                             
-# PROGRAMMER: 
+# PROGRAMMER: BOURIER, Frank
 # DATE CREATED:
-# REVISED DATE: 
+# REVISED DATE: 14.02.2024
 # PURPOSE: Create a function print_results that prints the results statistics
 #          from the results statistics dictionary (results_stats_dic). It 
 #          should also allow the user to be able to print out cases of misclassified
@@ -71,18 +71,25 @@ def print_results(results_dic, results_stats_dic, model,
     for k,v in results_stats_dic.items():
         if(k.startswith('pct_')):
                 print('{}% of {}'.format(v, k))
+    
+    
+    #required change
+    #When printing the incorrect breeds you should print the pet label (v[0]) and the classifier label (v[1]). That is not what you are displaying here.
+    #So, fix this print() statement to ensure that you are displaying those 2 data points and only them.
                 
     if print_incorrect_dogs and not ((results_stats_dic['n_correct_dogs'] + results_stats_dic['n_correct_notdogs']) == results_stats_dic['n_images']):
         print('missclassified dogs image != classifier based on the dog file')
         for k,v in results_dic.items():
                 if (sum(results_dic[k][3:])==1):
-                        print("dict entry key:{} values: {}".format(k, v))
+                        print("pet label:{:>26} classifier labels: {:>30}".format(v[0], v[1]))
+                        # chqange print("dict entry key:{} values: {}".format(k, v))
 
     if(print_incorrect_breed and not (results_stats_dic['n_correct_dogs'] == results_stats_dic['n_correct_breed'])):
         print('missclassified breeds of dogs image != classifier based on the dog file')
         for k,v in results_dic.items():
                 if (sum(results_dic[k][3:])==2) and (results_dic[k][2]==0):
-                        print("dict entry key:{} values: {}".format(k, v))
+                        print("pet label:{:>26} classifier labels: {:>30}".format(v[0], v[1]))
+                        # chqange print("dict entry key:{} values: {}".format(k, v))
 
  
                 

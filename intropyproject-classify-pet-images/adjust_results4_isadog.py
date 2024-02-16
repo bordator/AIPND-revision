@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 # */AIPND-revision/intropyproject-classify-pet-images/adjust_results4_isadog.py
 #                                                                             
-# PROGRAMMER: 
+# PROGRAMMER: Bourier, Frank
 # DATE CREATED:                                 
-# REVISED DATE: 
+# REVISED DATE: 14.02.2024
 # PURPOSE: Create a function adjust_results4_isadog that adjusts the results 
 #          dictionary to indicate whether or not the pet image label is of-a-dog, 
 #          and to indicate whether or not the classifier image label is of-a-dog.
@@ -70,37 +70,48 @@ def adjust_results4_isadog(results_dic, dogfile):
            None - results_dic is mutable data type so no return needed.
     """ 
     
+    #required change
+    #Do not split the lines around ,. Instead, just apply .strip() to remove leading and trailing white spaces and then add the stripped line to the dictionary.
     dogs = {} 
     with open(dogfile, 'r') as file:
       for lines in file:
-             for i in lines.split(','):
-                  i = i.strip()
-                  dogs[i]=1
+#             for i in lines.split(','):
+          dogs[lines.strip()]=1
     
     #check labels and classifier if there are dog
     #check labels
     for r_k, r_v in results_dic.items():
-      found = False
-      for k,v in dogs.items():
-        if k in results_dic[r_k][0]:
-          found=True
-          break
-      results_dic[r_k].extend([1 if found else 0])
+      results_dic[r_k].append(1 if results_dic[r_k][0] in dogs else 0)
+      results_dic[r_k].append(1 if results_dic[r_k][1] in dogs else 0)
+
+      #required change
+      #found = False
+      #Just write an if statement that checks that results_dic[r_k] is in dogs. That is it.
+      #Replace the code on lines 83 - 88 by that check and add 1 or 0 to the dictionary depending on the result of the check.
+      # for k,v in dogs.items():
+      #   if k in results_dic[r_k][0]:
+      #     found=True
+      #     break
+      # results_dic[r_k].extend([1 if found else 0])
+
+      
+
+
 
     #check classifier
-    for r_k, r_v in results_dic.items():
-      found = False
-      for k,v in dogs.items():
-        if k in results_dic[r_k][1]:
-          found=True
-          break
-      results_dic[r_k].extend([1 if found else 0])
-    
+    #for r_k, r_v in results_dic.items():
+      #required change
+      #Just write an if statement that checks that results_dic[r_k] is in dogs. That is it.
+      #Replace the code on lines 92 - 97 by that check and add 1 or 0 to the dictionary depending on the result of the check.
+      #found = False
+      # for k,v in dogs.items():
+      #   if k in results_dic[r_k][1]:
+      #     found=True
+      #     break
+      # results_dic[r_k].extend([1 if found else 0])
+      #optimized and integrated into the first for loop
+      #results_dic[r_k].append(1 if results_dic[r_k][1] in dogs else 0)
 
-            
-#                           [ 
-#                              1 if (k in results_dic[r_k][0])else 0
-#                              ])
-        
-          
-    None
+    
+     
+ 

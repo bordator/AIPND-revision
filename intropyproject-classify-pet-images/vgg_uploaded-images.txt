@@ -1,7 +1,7 @@
 Command Line Arguments:
-     dir = uploaded_images/ 
+     dir = /Users/frankbourier/GitHub/AIPND-revision/intropyproject-classify-pet-images/uploaded_images/ 
     arch = vgg 
- dogfile = dognames.txt
+ dogfile = /Users/frankbourier/GitHub/AIPND-revision/intropyproject-classify-pet-images/dognames.txt
 
 Pet Image Label Dictionary has 4 key-value pairs.
 Below are 4 of them:
@@ -66,7 +66,7 @@ number of not dog images: 2
 0.0% of pct_correct_breed
 100.0% of pct_correct_notdogs
 missclassified breeds of dogs image != classifier based on the dog file
-dict entry key:dog_4.jpg values: ['dog', 'pomeranian', 0, 1, 1]
-dict entry key:dog_1.jpg values: ['dog', 'pomeranian', 0, 1, 1]
+pet label:                       dog classifier labels:                     pomeranian
+pet label:                       dog classifier labels:                     pomeranian
 
 ** Total Elapsed Runtime: 0:0:3

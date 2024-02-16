@@ -324,11 +324,10 @@ number of not dog images: 10
 90.0% of pct_correct_breed
 90.0% of pct_correct_notdogs
 missclassified dogs image != classifier based on the dog file
-dict entry key:                    cat_01.jpg
-values:['cat', 'norwegian elkhound, elkhound', 0, 0, 1] 
+pet label:                       cat classifier labels:   norwegian elkhound, elkhound
 missclassified breeds of dogs image != classifier based on the dog file
-dict entry key:Beagle_01170.jpg values: ['beagle', 'walker hound, walker foxhound', 0, 1, 1]
-dict entry key:Golden_retriever_05182.jpg values: ['golden retriever', 'leonberg', 0, 1, 1]
-dict entry key:Great_pyrenees_05367.jpg values: ['great pyrenees', 'kuvasz', 0, 1, 1]
+pet label:                    beagle classifier labels:  walker hound, walker foxhound
+pet label:          golden retriever classifier labels:                       leonberg
+pet label:            great pyrenees classifier labels:                         kuvasz
 
-** Total Elapsed Runtime: 0:0:35
+** Total Elapsed Runtime: 0:0:33

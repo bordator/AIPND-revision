@@ -324,7 +324,7 @@ number of not dog images: 10
 93.33333333333333% of pct_correct_breed
 100.0% of pct_correct_notdogs
 missclassified breeds of dogs image != classifier based on the dog file
-dict entry key:Beagle_01170.jpg values: ['beagle', 'walker hound, walker foxhound', 0, 1, 1]
-dict entry key:Great_pyrenees_05367.jpg values: ['great pyrenees', 'kuvasz', 0, 1, 1]
+pet label:                    beagle classifier labels:  walker hound, walker foxhound
+pet label:            great pyrenees classifier labels:                         kuvasz
 
-** Total Elapsed Runtime: 0:0:33
+** Total Elapsed Runtime: 0:0:31
